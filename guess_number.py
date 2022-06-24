@@ -7,8 +7,15 @@ print('3桁の数字を当ててください')
 print('回答は',max_count,'回までです')
 
 for i in range(1,max_count+1):
-    print(i,"回目の回答です")
-    num = int(input())
+    while True:
+        print(i,"回目の回答です")
+        num = int(input())
+        if not num>=100 and num<=999:
+            print('無効な入力です,3桁の数字を入力してください')
+        else:
+            break
+
+
     if num==ans:
         print("正解です")
         break
