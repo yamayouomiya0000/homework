@@ -19,10 +19,35 @@ def createNumber_nodup(digit):
     print('数字',number_nodup)
     return number_nodup
 
+def hitAndBlow(ans,number,digit):
+    hit = 0
+    blow = 0
+    number_list = []
+    answer_list = []
 
+    for i in range(1,digit+1):
+        number_list.append(number % 10)
+        number = number // 10
+
+        answer_list.append(ans % 10)
+        ans = ans //10
+    
+    for i in range(1,digit+1):
+        for j in range(1,digit+1):
+            if number_list[i-1] == answer_list[i-1]:
+                hit += 1
+                break
+            elif number_list[i-1] == answer_list[j-1]:
+                blow += 1
+                break
+    
+    print(hit,' Hit ',blow,' Blow ')
+
+           
+                
 
 while True:
-        print('何桁の数字当てゲームに挑戦しますか？(0~10桁まで)')
+        print('何桁の数字当てゲームに挑戦しますか？(2~10桁まで)')
         digit = int(input())
         if not (digit>=1 and digit<=10):
             print('無効な入力です,0~10までの数字を入力してください')
@@ -30,9 +55,9 @@ while True:
             break
         
 ans = createNumber_nodup(digit)
-max_count = 5
+max_count = 10
 
-print('3桁の数字を当ててください')
+print(digit,'桁の数字を当ててください')
 print('回答は',max_count,'回までです')
 
 for i in range(1,max_count+1):
@@ -45,16 +70,13 @@ for i in range(1,max_count+1):
         else:
             break
 
-
     if num==ans:
         print('正解です')
         break
     elif i==max_count:
         print('不正解です')
-    elif num>ans:
-        print('不正解です．もっと小さい数字です')
-    elif num<ans:
-        print('不正解です．もっと大きい数字です')        
+    else:
+        hitAndBlow(ans, num, digit)       
 
 else:
     print('正解は',ans,"でした")
