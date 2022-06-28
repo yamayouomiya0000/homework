@@ -3,7 +3,7 @@ import random as rd
 '''
 重複のない(178のように各桁の数字が被らない)任意の桁数の数字について,数字を推測するHit and Blowゲーム
 数字と場所が当たっている数を「Hit」。数字は当たっているが場所が当たってない数を「Blow」で示す。
-例）答えが178のとき,871と推測すると,1 Hit 2Blow
+例）答えが178のとき,871と推測すると,1 Hit 2 Blow
     7は数字と場所があっているため1 Hit,1と8は数字はあっているが場所があっていないため2 Blow
 '''
 
@@ -54,8 +54,8 @@ def hitAndBlow(answer,number,digit):   #HitとBlowの数を表示する関数
 while True:     #桁数を指定する，2~10以外の桁数が入力された場合は次の処理に行かないようにした
         print('何桁の数字当てゲームに挑戦しますか？(2~10桁まで)')
         digit = int(input())
-        if not (digit >= 1 and digit <= 10):
-            print('無効な入力です,0~10までの数字を入力してください')
+        if not (digit >= 2 and digit <= 10):
+            print('無効な入力です,2~10までの数字を入力してください')
         else:
             break
         
